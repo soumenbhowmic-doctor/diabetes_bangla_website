@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="bn" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডায়াবেটিস বাংলা | Diabetes Bangla</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            blue: '#0056b3',
+                            light: '#e6f0ff',
+                        },
+                        emerald: {
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    },
+                    fontFamily: {
+                        bengali: ['"Noto Sans Bengali"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Noto Sans Bengali', sans-serif;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased">
+
+    <nav class="bg-white shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-heart-pulse text-emerald-600 text-2xl"></i>
+                <span class="text-xl font-bold text-slate-800">ডায়াবেটিস বাংলা</span>
+            </div>
+            <div class="hidden md:flex space-x-6 text-sm font-semibold">
+                <a href="#symptoms" class="hover:text-emerald-600 transition">লক্ষণ</a>
+                <a href="#diagnosis" class="hover:text-emerald-600 transition">সনাক্তকরণ</a>
+                <a href="#stats" class="hover:text-emerald-600 transition">পরিসংখ্যান</a>
+                <a href="#prevention" class="hover:text-emerald-600 transition">প্রতিরোধ</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-24 pb-16 bg-gradient-to-br from-blue-700 to-emerald-600 text-white text-center rounded-b-[3rem]">
+        <div class="container mx-auto px-6">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">ডায়াবেটিস বাংলা</h1>
+            <p class="text-xl md:text-2xl mb-8 font-light opacity-90">সুস্থ জীবনের জন্য সচেতনতা</p>
+            <p class="max-w-2xl mx-auto mb-8 text-lg opacity-80">
+                ডায়াবেটিস একটি দীর্ঘস্থায়ী রোগ, কিন্তু সঠিক জীবনযাপন ও সচেতনতার মাধ্যমে একে নিয়ন্ত্রণ করা সম্ভব। আসুন জেনে নিই সুস্থ থাকার উপায়।
+            </p>
+            <a href="#symptoms" class="inline-block bg-white text-blue-700 font-bold py-3 px-8 rounded-full shadow-lg hover:bg-slate-100 transform hover:-translate-y-1 transition duration-300">
+                আরও জানুন <i class="fa-solid fa-arrow-down ml-2"></i>
+            </a>
+        </div>
+    </header>
+    
+
+    <section id="symptoms" class="py-16 container mx-auto px-6">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-2">লক্ষণ ও উপসর্গ</h2>
+            <div class="w-20 h-1 bg-emerald-500 mx-auto rounded"></div>
+            <p class="mt-4 text-slate-600">নিচের লক্ষণগুলো দেখা দিলে দ্রুত চিকিৎসকের পরামর্শ নিন</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-500 hover:shadow-2xl transition duration-300">
+                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600 text-2xl">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">অতিরিক্ত পিপাসা</h3>
+                <p class="text-slate-600">বারবার পানি পিয়াসা পাওয়া এবং মুখ শুকিয়ে যাওয়া।</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-500 hover:shadow-2xl transition duration-300">
+                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600 text-2xl">
+                    <i class="fas fa-restroom"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">ঘন ঘন প্রস্রাব</h3>
+                <p class="text-slate-600">বিশেষ করে রাতে বারবার প্রস্রাবের বেগ হওয়া।</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-500 hover:shadow-2xl transition duration-300">
+                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600 text-2xl">
+                    <i class="fas fa-battery-quarter"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">চরম ক্লান্তি</h3>
+                <p class="text-slate-600">পর্যাপ্ত বিশ্রামের পরেও শরীর দুর্বল ও ক্লান্ত লাগা।</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-500 hover:shadow-2xl transition duration-300">
+                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600 text-2xl">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">ঝাপসা দৃষ্টি</h3>
+                <p class="text-slate-600">চোখে ঝাপসা দেখা বা ফোকাস করতে সমস্যা হওয়া।</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-500 hover:shadow-2xl transition duration-300">
+                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600 text-2xl">
+                    <i class="fas fa-band-aid"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">ক্ষত শুকাতে দেরি হওয়া</h3>
+                <p class="text-slate-600">শরীরের কোথাও কেটে গেলে বা ক্ষত হলে তা শুকাতে অনেক সময় লাগে।</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-lg border-b-4 border-blue-500 hover:shadow-2xl transition duration-300">
+                <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4 text-blue-600 text-2xl">
+                    <i class="fas fa-weight"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">ওজন কমে যাওয়া</h3>
+                <p class="text-slate-600">কোনো কারণ ছাড়াই হঠাৎ করে শরীরের ওজন কমে যাওয়া।</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="diagnosis" class="py-16 bg-blue-50">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-slate-800 mb-6">কিভাবে দ্রুত সনাক্ত করবেন?</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold flex-shrink-0">১</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-800">ফাস্টিং প্লাজমা গ্লুকোজ (FPG)</h4>
+                                <p class="text-slate-600">কমপক্ষে ৮ ঘণ্টা না খেয়ে থাকার পর এই পরীক্ষাটি করা হয়।</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold flex-shrink-0">২</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-800">হিমোগ্লোবিন A1c (HbA1c)</h4>
+                                <p class="text-slate-600">গত ২-৩ মাসের গড় রক্তে শর্করার মাত্রা নির্দেশ করে। এর জন্য উপোস থাকার প্রয়োজন নেই।</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold flex-shrink-0">৩</div>
+                            <div>
+                                <h4 class="text-xl font-bold text-slate-800">র‍্যান্ডম ব্লাড সুগার টেস্ট</h4>
+                                <p class="text-slate-600">দিনের যেকোনো সময় এই পরীক্ষাটি করা যেতে পারে।</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-xl font-bold text-center mb-4 text-blue-700">স্বাভাবিক মাত্রা (Reference)</h3>
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="py-2 text-slate-500">পরীক্ষা</th>
+                                <th class="py-2 text-slate-500">স্বাভাবিক (Normal)</th>
+                                <th class="py-2 text-slate-500">ডায়াবেটিস</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <tr class="border-b border-gray-100">
+                                <td class="py-3 font-semibold">খালি পেটে (FPG)</td>
+                                <td class="py-3 text-emerald-600">< ৫.৬ mmol/L</td>
+                                <td class="py-3 text-red-600">≥ ৭.০ mmol/L</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3 font-semibold">খাবার ২ ঘণ্টা পর</td>
+                                <td class="py-3 text-emerald-600">< ৭.৮ mmol/L</td>
+                                <td class="py-3 text-red-600">≥ ১১.১ mmol/L</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="py-16 container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center text-slate-800 mb-8">ডায়াবেটিসের ধরন</h2>
+        
+        <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+            <div class="flex border-b">
+                <button onclick="openTab(event, 'type1')" class="tab-link w-1/3 py-4 text-center font-bold hover:bg-slate-50 transition border-b-4 border-transparent active-tab focus:outline-none text-blue-600 border-blue-600 bg-blue-50">টাইপ ১</button>
+                <button onclick="openTab(event, 'type2')" class="tab-link w-1/3 py-4 text-center font-bold text-slate-500 hover:bg-slate-50 transition border-b-4 border-transparent focus:outline-none">টাইপ ২</button>
+                <button onclick="openTab(event, 'gestational')" class="tab-link w-1/3 py-4 text-center font-bold text-slate-500 hover:bg-slate-50 transition border-b-4 border-transparent focus:outline-none">গর্ভকালীন</button>
+            </div>
+
+            <div class="p-8 min-h-[300px]">
+                <div id="type1" class="tab-content active">
+                    <div class="flex flex-col md:flex-row gap-6 items-center">
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-bold text-blue-700 mb-3">টাইপ ১ ডায়াবেটিস</h3>
+                            <p class="text-slate-600 mb-4">এটি একটি অটোইমিউন রোগ। এতে অগ্ন্যাশয় ইনসুলিন তৈরি করতে পারে না। এটি সাধারণত শিশু ও কিশোর বয়সে দেখা দেয়।</p>
+                            <ul class="list-disc pl-5 space-y-2 text-slate-600">
+                                <li>শরীরে ইনসুলিন উৎপাদন সম্পূর্ণ বন্ধ থাকে।</li>
+                                <li>বেঁচে থাকার জন্য নিয়মিত ইনসুলিন ইনজেকশন নিতে হয়।</li>
+                                <li>বংশগত কারণ বা ভাইরাস সংক্রমণের কারণে হতে পারে।</li>
+                            </ul>
+                        </div>
+                        <div class="md:w-1/3 text-center">
+                            <i class="fas fa-syringe text-8xl text-blue-200"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="type2" class="tab-content">
+                    <div class="flex flex-col md:flex-row gap-6 items-center">
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-bold text-emerald-700 mb-3">টাইপ ২ ডায়াবেটিস</h3>
+                            <p class="text-slate-600 mb-4">শরীরে ইনসুলিন তৈরি হয় কিন্তু তা সঠিকভাবে কাজ করে না (ইনসুলিন রেজিস্ট্যান্স)। এটি সবচেয়ে সাধারণ ধরন এবং বয়স্কদের মধ্যে বেশি দেখা যায়।</p>
+                            <ul class="list-disc pl-5 space-y-2 text-slate-600">
+                                <li>অতিরিক্ত ওজন এবং কায়িক পরিশ্রম না করা এর প্রধান কারণ।</li>
+                                <li>খাদ্যাভ্যাস পরিবর্তন ও ব্যায়ামের মাধ্যমে নিয়ন্ত্রণ সম্ভব।</li>
+                                <li>মাঝে মাঝে ওষুধের প্রয়োজন হতে পারে।</li>
+                            </ul>
+                        </div>
+                        <div class="md:w-1/3 text-center">
+                            <i class="fas fa-user-injured text-8xl text-emerald-200"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="gestational" class="tab-content">
+                    <div class="flex flex-col md:flex-row gap-6 items-center">
+                        <div class="md:w-2/3">
+                            <h3 class="text-2xl font-bold text-purple-700 mb-3">গর্ভকালীন ডায়াবেটিস</h3>
+                            <p class="text-slate-600 mb-4">গর্ভাবস্থায় কিছু নারীর রক্তে শর্করার মাত্রা বেড়ে যায়। এটি সাধারণত সন্তান প্রসবের পর চলে যায়।</p>
+                            <ul class="list-disc pl-5 space-y-2 text-slate-600">
+                                <li>ভবিষ্যতে মা ও শিশুর টাইপ ২ ডায়াবেটিস হওয়ার ঝুঁকি থাকে।</li>
+                                <li>নিয়মিত চেকআপ এবং ডায়েট মেনে চলা জরুরি।</li>
+                                <li>বাচ্চা সুস্থভাবে জন্মানোর জন্য সুগার নিয়ন্ত্রণ আবশ্যক।</li>
+                            </ul>
+                        </div>
+                        <div class="md:w-1/3 text-center">
+                            <i class="fas fa-baby-carriage text-8xl text-purple-200"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-slate-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">ঝুঁকির কারণসমূহ</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-500 text-2xl"></i>
+                    <span class="font-semibold text-lg">পারিবারিক ইতিহাস (Genetics)</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-500 text-2xl"></i>
+                    <span class="font-semibold text-lg">অতিরিক্ত ওজন (Obesity)</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-500 text-2xl"></i>
+                    <span class="font-semibold text-lg">শারীরিক পরিশ্রমের অভাব</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-500 text-2xl"></i>
+                    <span class="font-semibold text-lg">উচ্চ রক্তচাপ</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-500 text-2xl"></i>
+                    <span class="font-semibold text-lg">অস্বাস্থ্যকর খাদ্যাভ্যাস</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-500 text-2xl"></i>
+                    <span class="font-semibold text-lg">বয়স ৪৫ এর বেশি</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-500 text-2xl"></i>
+                    <span class="font-semibold text-lg">ধূমপান ও মদ্যপান</span>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow flex items-center gap-4">
+                    <i class="fas fa-check-circle text-emerald-500 text-2xl"></i>
+                    <span class="font-semibold text-lg">মানসিক চাপ (Stress)</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-12 bg-red-50 border-y border-red-100">
+        <div class="container mx-auto px-6 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 bg-red-100 rounded-full mb-4 text-red-600 text-3xl">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h2 class="text-3xl font-bold text-red-700 mb-4">দীর্ঘমেয়াদী জটিলতা</h2>
+            <p class="text-slate-700 max-w-2xl mx-auto mb-8">
+                ডায়াবেটিস নিয়ন্ত্রণে না রাখলে শরীরে মারাত্মক জটিলতা দেখা দিতে পারে। যেমন: হৃদরোগ, কিডনি বিকল হওয়া (Nephropathy), চোখের ক্ষতি (Retinopathy), এবং স্নায়ুতন্ত্রের ক্ষতি (Neuropathy)।
+            </p>
+        </div>
+    </section>
+
+    <section id="stats" class="py-16 container mx-auto px-6">
+        <div class="flex flex-col lg:flex-row items-center gap-12">
+            <div class="lg:w-1/2">
+                <h2 class="text-3xl font-bold text-slate-800 mb-6">বাংলাদেশে ডায়াবেটিস চিত্র</h2>
+                <p class="text-slate-600 mb-6 text-lg">
+                    বাংলাদেশে ডায়াবেটিস রোগীর সংখ্যা উদ্বেগজনক হারে বাড়ছে। আন্তর্জাতিক ডায়াবেটিস ফেডারেশন (IDF) এর মতে, বাংলাদেশে প্রাপ্তবয়স্কদের মধ্যে প্রায় ১৩% মানুষ ডায়াবেটিসে আক্রান্ত।
+                </p>
+                <ul class="space-y-4">
+                    <li class="flex items-center gap-3">
+                        <div class="w-3 h-3 bg-blue-600 rounded-full"></div>
+                        <span class="text-slate-700 font-medium">শহরাঞ্চলে আক্রান্তের হার বেশি।</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-3 h-3 bg-emerald-500 rounded-full"></div>
+                        <span class="text-slate-700 font-medium">অনেকে জানেন না যে তারা আক্রান্ত।</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <div class="w-3 h-3 bg-slate-400 rounded-full"></div>
+                        <span class="text-slate-700 font-medium">তরুণ প্রজন্মের মধ্যেও ঝুঁকি বাড়ছে।</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="lg:w-1/2 w-full bg-white p-6 rounded-xl shadow-lg border border-slate-100">
+                <canvas id="diabetesChart"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <section id="prevention" class="py-16 bg-gradient-to-t from-blue-50 to-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">প্রতিরোধ ও করণীয়</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-emerald-600 py-4 px-6">
+                        <h3 class="text-white text-xl font-bold flex items-center gap-2">
+                            <i class="fas fa-check"></i> যা করবেন (Do's)
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4 text-slate-700">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                <span>সুষম ও ফাইবারযুক্ত খাবার গ্রহণ করুন (শাকসবজি, ফলমূল)।</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                <span>প্রতিদিন অন্তত ৩০ মিনিট দ্রুত হাঁটুন বা ব্যায়াম করুন।</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                <span>দেহের ওজন নিয়ন্ত্রণে রাখুন।</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-check text-emerald-600 mt-1"></i>
+                                <span>নিয়মিত ব্লাড সুগার চেক করুন।</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                    <div class="bg-red-500 py-4 px-6">
+                        <h3 class="text-white text-xl font-bold flex items-center gap-2">
+                            <i class="fas fa-times"></i> যা করবেন না (Don'ts)
+                        </h3>
+                    </div>
+                    <div class="p-6">
+                        <ul class="space-y-4 text-slate-700">
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-times text-red-500 mt-1"></i>
+                                <span>অতিরিক্ত চিনি বা মিষ্টি জাতীয় খাবার খাবেন না।</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-times text-red-500 mt-1"></i>
+                                <span>ফাস্টফুড ও প্রক্রিয়াজাত খাবার এড়িয়ে চলুন।</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-times text-red-500 mt-1"></i>
+                                <span>দীর্ঘক্ষণ এক জায়গায় বসে থাকবেন না।</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <i class="fas fa-times text-red-500 mt-1"></i>
+                                <span>ধূমপান ও মদ্যপান সম্পূর্ণ বর্জন করুন।</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer class="bg-slate-800 text-slate-300 py-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">ডায়াবেটিস বাংলা</h3>
+                    <p class="text-sm">মানুষের মধ্যে ডায়াবেটিস সচেতনতা বৃদ্ধির লক্ষ্যে একটি ক্ষুদ্র প্রচেষ্টা। সুস্থ থাকুন, ভালো থাকুন।</p>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">জরুরী যোগাযোগ</h3>
+                    <ul class="text-sm space-y-2">
+                        <li><i class="fas fa-phone mr-2"></i> বারডেম জেনারেল হাসপাতাল: ১০৬১৫</li>
+                        <li><i class="fas fa-ambulance mr-2"></i> এম্বুলেন্স সার্ভিস: ৯৯৯</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-white text-lg font-bold mb-4">সোশ্যাল মিডিয়া</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="hover:text-white transition"><i class="fab fa-facebook text-xl"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="hover:text-white transition"><i class="fab fa-youtube text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-slate-700 mt-8 pt-8 text-center text-sm">
+                &copy; ২০২৬ ডায়াবেটিস বাংলা। সর্বস্বত্ব সংরক্ষিত।
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Interactive Tabs Logic ---
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            // Hide all tab contents
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+
+            // Remove active styles from all buttons
+            tablinks = document.getElementsByClassName("tab-link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("text-blue-600", "border-blue-600", "bg-blue-50", "active-tab");
+                tablinks[i].classList.add("text-slate-500", "border-transparent");
+            }
+
+            // Show the current tab and add active styles
+            document.getElementById(tabName).style.display = "block";
+            setTimeout(() => {
+                 document.getElementById(tabName).classList.add("active");
+            }, 10);
+           
+            evt.currentTarget.classList.remove("text-slate-500", "border-transparent");
+            evt.currentTarget.classList.add("text-blue-600", "border-blue-600", "bg-blue-50", "active-tab");
+        }
+
+        // --- Chart.js Logic ---
+        document.addEventListener("DOMContentLoaded", function() {
+            const ctx = document.getElementById('diabetesChart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['শহরাঞ্চল', 'গ্রামাঞ্চল', 'জাতীয় গড়', 'প্রি-ডায়াবেটিস'],
+                    datasets: [{
+                        label: 'আক্রান্তের হার (%)',
+                        data: [15, 8, 13, 22], // Dummy accurate-ish data based on recent studies
+                        backgroundColor: [
+                            'rgba(37, 99, 235, 0.7)', // Blue
+                            'rgba(16, 185, 129, 0.7)', // Emerald
+                            'rgba(245, 158, 11, 0.7)', // Amber
+                            'rgba(100, 116, 139, 0.7)' // Slate
+                        ],
+                        borderColor: [
+                            'rgba(37, 99, 235, 1)',
+                            'rgba(16, 185, 129, 1)',
+                            'rgba(245, 158, 11, 1)',
+                            'rgba(100, 116, 139, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false // Hide legend for cleaner look
+                        },
+                        title: {
+                            display: true,
+                            text: 'বাংলাদেশে প্রাপ্তবয়স্কদের মধ্যে ডায়াবেটিস প্রাদুর্ভাব (আনুমানিক)',
+                            font: {
+                                size: 16,
+                                family: "'Noto Sans Bengali', sans-serif"
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'শতাংশ (%)'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+    
+</body>
+</html>
