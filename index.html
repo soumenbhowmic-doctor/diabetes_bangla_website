@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ডায়াবেটিস বাংলা | Diabetes Bangla</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts for Bengali -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js for Graphs -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Custom SVG Logo -->
+                <svg class="h-12 w-12" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Blue Circle (Diabetes Symbol) -->
+                    <circle cx="50" cy="50" r="42" stroke="#2563EB" stroke-width="8" />
+                    <!-- Green Leaf (Bangla/Nature) -->
+                    <path d="M50 25C50 25 70 25 75 45C80 65 60 75 50 75" fill="#22C55E" fill-opacity="0.8"/>
+                    <path d="M50 25C50 25 30 25 25 45C20 65 40 75 50 75" fill="#16A34A" fill-opacity="0.9"/>
+                    <!-- Red Blood Drop -->
+                    <path d="M50 45C50 45 60 58 60 65C60 72 55.5 76 50 76C44.5 76 40 72 40 65C40 58 50 45 50 45Z" fill="#EF4444"/>
+                    <!-- Highlight on Drop -->
+                    <path d="M46 62C46 62 45 64 46 66" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                
+                <h1 class="text-2xl font-bold text-blue-800 tracking-tight">ডায়াবেটিস <span class="text-green-600">বাংলা</span></h1>
+            </div>
+            <div class="hidden md:flex space-x-6 font-medium">
+                <a href="#home" class="hover:text-blue-600 transition">হোম</a>
+                <a href="#info" class="hover:text-blue-600 transition">তথ্য</a>
+                <a href="#tests" class="hover:text-blue-600 transition">পরীক্ষা</a>
+                <a href="#logbook" class="hover:text-blue-600 transition">লগবুক</a>
+                <a href="#tools" class="hover:text-blue-600 transition">টুলস</a>
+                <a href="#telemedicine" class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">ডাক্তারের পরামর্শ</a>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-blue-600">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t p-4 flex flex-col space-y-3">
+            <a href="#home" class="block hover:text-blue-600">হোম</a>
+            <a href="#info" class="block hover:text-blue-600">তথ্য</a>
+            <a href="#tests" class="block hover:text-blue-600">পরীক্ষা</a>
+            <a href="#logbook" class="block hover:text-blue-600">লগবুক</a>
+            <a href="#tools" class="block hover:text-blue-600">টুলস</a>
+            <a href="#telemedicine" class="block text-blue-600 font-bold">ডাক্তারের পরামর্শ</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="gradient-bg text-white py-20">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex justify-center mb-6">
+                <!-- Large Logo Icon for Hero -->
+                <img src="Adobe Express - file.png" alt="Diabetes Bangla Logo" width="200px">
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">সুস্থ জীবন, সুন্দর আগামীর জন্য</h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">আপনার ডায়াবেটিস ব্যবস্থাপনার বিশ্বস্ত ডিজিটাল সঙ্গী</p>
+            <div class="flex flex-col md:flex-row justify-center gap-4">
+                <a href="#logbook" class="bg-white text-blue-600 px-8 py-3 rounded-full font-bold shadow-lg hover:bg-gray-100 transition">লগবুক শুরু করুন</a>
+                <a href="#info" class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-blue-600 transition">আরও জানুন</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Information Section (Tabs) -->
+    <section id="info" class="py-16 container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">ডায়াবেটিস তথ্য ও ব্যবস্থাপনা</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1: Prevention -->
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-green-500">
+                <div class="text-green-500 text-4xl mb-4"><i class="fas fa-shield-alt"></i></div>
+                <h3 class="text-xl font-bold mb-2">
+                  <a href="diabetes.html"> প্রতিরোধ ও প্রতিকার</a> </h3>
+                <p class="text-gray-600 text-sm">ডায়াবেটিস প্রতিরোধে সুষম খাদ্য, নিয়মিত ব্যায়াম এবং ওজন নিয়ন্ত্রণ অত্যন্ত জরুরি। শর্করা বা কার্বোহাইড্রেট জাতীয় খাবার কমিয়ে ফাইবার যুক্ত খাবার বেশি খাওয়া উচিত। প্রতিদিন অন্তত ৩০ মিনিট হাঁটা বা ব্যায়াম করা প্রয়োজন।</p>
+            </div>
+
+            <!-- Card 2: Pre-Diabetes -->
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-yellow-500">
+                <div class="text-yellow-500 text-4xl mb-4"><i class="fas fa-exclamation-triangle"></i></div>
+                <h3 class="text-xl font-bold mb-2"><a href="booking.html">প্রি-ডায়াবেটিস</a></h3>
+                <p class="text-gray-600 text-sm">এটি ডায়াবেটিসের পূর্ববর্তী অবস্থা। ফাস্টিং গ্লুকোজ ৫.৬ থেকে ৬.৯ mmol/L হলে তাকে প্রি-ডায়াবেটিস বলে। সঠিক সময়ে জীবনযাত্রার পরিবর্তন আনলে এখান থেকে সম্পূর্ণ সুস্থ হওয়া সম্ভব এবং টাইপ-২ ডায়াবেটিস প্রতিরোধ করা যায়।</p>
+            </div>
+
+            <!-- Card 3: Obesity Link -->
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-red-500">
+                <div class="text-red-500 text-4xl mb-4"><i class="fas fa-weight"></i></div>
+                <h3 class="text-xl font-bold mb-2">স্থূলতা ও টাইপ-২ ডায়াবেটিস</h3>
+                <p class="text-gray-600 text-sm">অতিরিক্ত ওজন বা স্থূলতা ইনসুলিন রেজিস্ট্যান্স তৈরি করে, যা টাইপ-২ ডায়াবেটিসের প্রধান কারণ। বিএমআই (BMI) ২৫-এর নিচে রাখা এবং কোমরের মাপ নিয়ন্ত্রণ করা অত্যন্ত গুরুত্বপূর্ণ।</p>
+            </div>
+
+            <!-- Card 4: New Research -->
+            <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-blue-500">
+                <div class="text-blue-500 text-4xl mb-4"><i class="fas fa-microscope"></i></div>
+                <h3 class="text-xl font-bold mb-2">নতুন গবেষণা</h3>
+                <p class="text-gray-600 text-sm">আধুনিক গবেষণায় দেখা গেছে, লো-কার্ব ডায়েট এবং ইন্টারমিটেন্ট ফাস্টিং ডায়াবেটিস নিয়ন্ত্রণে জাদুকরী ভূমিকা রাখে। কৃত্রিম প্যানক্রিয়াস এবং স্মার্ট ইনসুলিন পাম্প নিয়েও গবেষণা চলছে।</p>
+            </div>
+
+             <!-- Card 5: Glucose Monitor -->
+             <div class="bg-white p-6 rounded-xl shadow-md card-hover border-t-4 border-purple-500">
+                <div class="text-purple-500 text-4xl mb-4"><i class="fas fa-tint"></i></div>
+                <h3 class="text-xl font-bold mb-2">গ্লুকোমিটারের ব্যবহার</h3>
+                <p class="text-gray-600 text-sm">বাড়িতে গ্লুকোমিটার ব্যবহারের আগে হাত ভালো করে সাবান দিয়ে ধুয়ে শুকিয়ে নিন। স্ট্রিপ মিটারে প্রবেশ করান, ল্যানসেট দিয়ে আঙুলের ডগায় সামান্য ছিদ্র করুন এবং রক্তের ফোঁটা স্ট্রিপে দিন। ফলাফল লিখে রাখুন।</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Medical Tests Section -->
+    <section id="tests" class="bg-blue-50 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">প্রয়োজনীয় পরীক্ষা সমূহ</h2>
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-blue-600 text-white">
+                                <th class="p-4 border-b">পরীক্ষার নাম</th>
+                                <th class="p-4 border-b">বিবরণ</th>
+                                <th class="p-4 border-b">স্বাভাবিক মাত্রা (Reference)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-gray-700">
+                            <tr>
+                                <td class="p-4 border-b font-bold">Fasting Blood Glucose</td>
+                                <td class="p-4 border-b">অন্তত ৮ ঘণ্টা না খেয়ে থাকার পর রক্তে শর্করার পরিমাণ।</td>
+                                <td class="p-4 border-b text-green-600 font-semibold">< 5.6 mmol/L</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="p-4 border-b font-bold">2 Hours After Breakfast</td>
+                                <td class="p-4 border-b">খাবার শুরুর ঠিক ২ ঘণ্টা পর শর্করার পরিমাণ।</td>
+                                <td class="p-4 border-b text-green-600 font-semibold">< 7.8 mmol/L</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 border-b font-bold">HbA1c</td>
+                                <td class="p-4 border-b">গত ৩ মাসের গড় রক্তের শর্করা।</td>
+                                <td class="p-4 border-b text-green-600 font-semibold">< 5.7%</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="p-4 border-b font-bold">Fasting Insulin</td>
+                                <td class="p-4 border-b">খালি পেটে ইনসুলিন হরমোনের মাত্রা।</td>
+                                <td class="p-4 border-b text-green-600 font-semibold">2.6 - 24.9 µIU/mL</td>
+                            </tr>
+                            <tr>
+                                <td class="p-4 border-b font-bold">HOMA-IR</td>
+                                <td class="p-4 border-b">ইনসুলিন রেজিস্ট্যান্স বা কার্যকারিতা মাপার সূচক।</td>
+                                <td class="p-4 border-b text-green-600 font-semibold">< 1.0 (Optimal)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Logbook Section -->
+    <section id="logbook" class="py-16 container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-4">আমার ডায়াবেটিস লগবুক</h2>
+        <p class="text-center text-gray-500 mb-10">আপনার তথ্যের গোপনীয়তা রক্ষা করতে এটি শুধুমাত্র আপনার ব্রাউজারে সেভ থাকে।</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Profile & Input Form -->
+            <div class="lg:col-span-1 space-y-6">
+                <!-- User Profile -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold mb-4 border-b pb-2 text-blue-600">রোগীর প্রোফাইল</h3>
+                    <div id="profile-display" class="hidden">
+                        <p><strong>নাম:</strong> <span id="disp-name"></span></p>
+                        <p><strong>বয়স:</strong> <span id="disp-age"></span> | <strong>লিঙ্গ:</strong> <span id="disp-sex"></span></p>
+                        <p><strong>ধরণ:</strong> <span id="disp-type"></span></p>
+                        <button onclick="editProfile()" class="mt-3 text-sm text-blue-500 hover:underline">তথ্য পরিবর্তন করুন</button>
+                    </div>
+                    <form id="profile-form" onsubmit="saveProfile(event)" class="space-y-3">
+                        <input type="text" id="p-name" placeholder="রোগীর নাম" class="w-full p-2 border rounded" required>
+                        <div class="flex gap-2">
+                            <input type="number" id="p-age" placeholder="বয়স" class="w-1/2 p-2 border rounded" required>
+                            <select id="p-sex" class="w-1/2 p-2 border rounded">
+                                <option value="Male">পুরুষ</option>
+                                <option value="Female">মহিলা</option>
+                            </select>
+                        </div>
+                        <select id="p-type" class="w-full p-2 border rounded">
+                            <option value="Type 2">টাইপ ২ ডায়াবেটিস</option>
+                            <option value="Type 1">টাইপ ১ ডায়াবেটিস</option>
+                            <option value="Pre-Diabetes">প্রি-ডায়াবেটিস</option>
+                            <option value="Gestational">জেস্টেশনাল</option>
+                        </select>
+                        <textarea id="p-meds" placeholder="ঔষধ বা ইনসুলিনের বিবরণ" class="w-full p-2 border rounded h-20"></textarea>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">প্রোফাইল সেভ করুন</button>
+                    </form>
+                </div>
+
+                <!-- Data Entry -->
+                <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-xl font-bold mb-4 border-b pb-2 text-green-600">নতুন রিডিং যুক্ত করুন</h3>
+                    <form id="log-form" onsubmit="addLogEntry(event)" class="space-y-3">
+                        <div>
+                            <label class="text-sm font-semibold">তারিখ ও সময়</label>
+                            <input type="datetime-local" id="log-time" class="w-full p-2 border rounded" required>
+                        </div>
+                        <div>
+                            <label class="text-sm font-semibold">গ্লুকোজ লেভেল (mmol/L)</label>
+                            <input type="number" step="0.1" id="log-glucose" placeholder="যেমন: 6.5" class="w-full p-2 border rounded text-lg" required>
+                        </div>
+                        <div>
+                            <label class="text-sm font-semibold">অবস্থা (কখন মাপা হয়েছে?)</label>
+                            <select id="log-status" class="w-full p-2 border rounded">
+                                <option value="Fasting">খালি পেটে (Fasting)</option>
+                                <option value="After Meal">খাবার ২ ঘণ্টা পর</option>
+                                <option value="Random">র‍্যান্ডম / যেকোনো সময়</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 font-bold"><i class="fas fa-plus"></i> যোগ করুন</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Graph & List -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Chart -->
+                <div class="bg-white p-4 rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-lg font-bold mb-2 text-gray-700">গ্লুকোজ চার্ট</h3>
+                    <div class="relative h-64 w-full">
+                        <canvas id="diabetesChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Recent Logs Table -->
+                <div class="bg-white p-4 rounded-xl shadow-md border border-gray-200 overflow-hidden">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-bold text-gray-700">পূর্ববর্তী রেকর্ডসমূহ</h3>
+                        <button onclick="clearLogs()" class="text-xs text-red-500 hover:text-red-700">সব মুছুন</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th class="p-3">তারিখ</th>
+                                    <th class="p-3">অবস্থা</th>
+                                    <th class="p-3">mmol/L</th>
+                                    <th class="p-3">মন্তব্য</th>
+                                </tr>
+                            </thead>
+                            <tbody id="log-table-body">
+                                <!-- JS will populate this -->
+                                <tr>
+                                    <td colspan="4" class="p-4 text-center text-gray-400">কোনো তথ্য পাওয়া যায়নি</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculators Section -->
+    <section id="tools" class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10">স্বাস্থ্য টুলস</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <!-- BMI Calculator -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600 text-center">বিএমআই (BMI) ক্যালকুলেটর</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700">ওজন (কেজি)</label>
+                            <input type="number" id="bmi-weight" class="w-full p-2 border rounded focus:outline-none focus:border-blue-500" placeholder="যেমন: 70">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700">উচ্চতা (মিটার)</label>
+                            <input type="number" step="0.01" id="bmi-height" class="w-full p-2 border rounded focus:outline-none focus:border-blue-500" placeholder="যেমন: 1.70">
+                            <p class="text-xs text-gray-400 mt-1">বি:দ্র: ৫ ফুট ৬ ইঞ্চি = ১.৬৮ মিটার</p>
+                        </div>
+                        <button onclick="calculateBMI()" class="w-full bg-blue-600 text-white py-2 rounded font-bold hover:bg-blue-700">হিসাব করুন</button>
+                        
+                        <div id="bmi-result" class="hidden mt-4 p-4 rounded bg-gray-50 text-center">
+                            <p class="text-3xl font-bold text-gray-800" id="bmi-value">0.0</p>
+                            <p class="text-lg font-medium" id="bmi-status">--</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Simple Insulin Calculator (Correction) -->
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold mb-4 text-purple-600 text-center">ইনসুলিন কারেকশন ডোজ</h3>
+                    <div class="bg-yellow-50 p-2 text-xs text-yellow-800 mb-4 border-l-4 border-yellow-500 rounded">
+                        সতর্কতা: এটি শুধুমাত্র একটি সাধারণ ধারণা। ইনসুলিন নেওয়ার আগে অবশ্যই আপনার ডাক্তারের পরামর্শ নিন।
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-gray-700">বর্তমান গ্লুকোজ (mmol/L)</label>
+                            <input type="number" step="0.1" id="ins-current" class="w-full p-2 border rounded" placeholder="যেমন: 12.0">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700">টার্গেট গ্লুকোজ (mmol/L)</label>
+                            <input type="number" step="0.1" id="ins-target" class="w-full p-2 border rounded" value="6.0">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700">ISF (Insulin Sensitivity Factor)</label>
+                            <input type="number" id="ins-isf" class="w-full p-2 border rounded" value="2" placeholder="সাধারণত 2-3 mmol/L">
+                            <p class="text-xs text-gray-400">১ ইউনিট ইনসুলিন আপনার সুগার কতটুকু কমায়?</p>
+                        </div>
+                        <button onclick="calculateInsulin()" class="w-full bg-purple-600 text-white py-2 rounded font-bold hover:bg-purple-700">হিসাব করুন</button>
+                        
+                        <div id="ins-result" class="hidden mt-4 p-4 rounded bg-gray-50 text-center border border-purple-200">
+                            <p class="text-gray-600">প্রয়োজন হতে পারে:</p>
+                            <p class="text-3xl font-bold text-purple-700"><span id="ins-dose">0</span> ইউনিট</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Telemedicine Section -->
+    <section id="telemedicine" class="py-16 container mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6"><a href="telemedicine.html">টেলিমেডিসিন সেবা</a></h2>
+        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">ঘরে বসেই বিশেষজ্ঞ ডাক্তারের পরামর্শ নিন। ভিডিও কলের মাধ্যমে আপনার সমস্যা নিয়ে আলোচনা করুন।</p>
+        
+        <div class="flex flex-wrap justify-center gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 w-full md:w-64">
+                <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl text-gray-400">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3 class="font-bold text-lg">ডাঃ আহমেদ রিয়াজ</h3>
+                <p class="text-sm text-blue-600">ডায়াবেটিস ও হরমোন বিশেষজ্ঞ</p>
+                <p class="text-xs text-gray-500 my-2">এমবিবিএস, এফসিপিএস</p>
+                <button onclick="showModal()" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 mt-2">অ্যাপয়েন্টমেন্ট নিন</button>
+            </div>
+            
+             <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200 w-full md:w-64">
+                <div class="w-20 h-20 bg-gray-200 rounded-full mx-auto mb-4 flex items-center justify-center text-3xl text-gray-400">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h3 class="font-bold text-lg">ডাঃ সুমাইয়া ইসলাম</h3>
+                <p class="text-sm text-blue-600">পুষ্টিবিদ</p>
+                <p class="text-xs text-gray-500 my-2">বিএসসি (পুষ্টি), এমপিএইচ</p>
+                <button onclick="showModal()" class="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600 mt-2">অ্যাপয়েন্টমেন্ট নিন</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appointment Modal (Hidden by default) -->
+    <div id="appoint-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-8 rounded-lg max-w-sm w-full text-center">
+            <i class="fas fa-check-circle text-green-500 text-5xl mb-4"></i>
+            <h3 class="text-2xl font-bold mb-2">ধন্যবাদ!</h3>
+            <p class="text-gray-600 mb-6">আপনার অনুরোধটি গ্রহণ করা হয়েছে। আমাদের প্রতিনিধি শীঘ্রই আপনার সাথে যোগাযোগ করবেন।</p>
+            <button onclick="closeModal()" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">ঠিক আছে</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-10">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center mb-4">
+                <!-- Footer SVG Logo -->
+                <svg class="h-8 w-8 mr-2" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="42" stroke="#60A5FA" stroke-width="8" />
+                    <path d="M50 25C50 25 70 25 75 45C80 65 60 75 50 75" fill="#4ADE80" fill-opacity="0.8"/>
+                    <path d="M50 25C50 25 30 25 25 45C20 65 40 75 50 75" fill="#22C55E" fill-opacity="0.9"/>
+                    <path d="M50 45C50 45 60 58 60 65C60 72 55.5 76 50 76C44.5 76 40 72 40 65C40 58 50 45 50 45Z" fill="#EF4444"/>
+                </svg>
+                <span class="font-bold text-xl">ডায়াবেটিস বাংলা</span>
+            </div>
+            <p class="text-sm text-gray-400 mb-4">আপনার স্বাস্থ্য সচেতনতায় আমাদের ক্ষুদ্র প্রচেষ্টা।</p>
+            <p class="text-xs text-gray-500">&copy; ২০২৪ ডায়াবেটিস বাংলা। সর্বস্বত্ব সংরক্ষিত।</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- 1. Mobile Menu Logic ---
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- 2. BMI Calculator Logic ---
+        function calculateBMI() {
+            const weight = parseFloat(document.getElementById('bmi-weight').value);
+            const height = parseFloat(document.getElementById('bmi-height').value);
+            const resultDiv = document.getElementById('bmi-result');
+            const valSpan = document.getElementById('bmi-value');
+            const statusSpan = document.getElementById('bmi-status');
+
+            if (!weight || !height) {
+                alert("দয়া করে সঠিক ওজন এবং উচ্চতা দিন।");
+                return;
+            }
+
+            const bmi = (weight / (height * height)).toFixed(2);
+            valSpan.innerText = bmi;
+            resultDiv.classList.remove('hidden');
+
+            let status = '';
+            let colorClass = '';
+
+            if (bmi < 18.5) {
+                status = 'কম ওজন (Underweight)';
+                colorClass = 'text-yellow-600';
+            } else if (bmi >= 18.5 && bmi <= 24.9) {
+                status = 'স্বাভাবিক (Normal)';
+                colorClass = 'text-green-600';
+            } else if (bmi >= 25 && bmi <= 29.9) {
+                status = 'অতিরিক্ত ওজন (Overweight)';
+                colorClass = 'text-orange-600';
+            } else {
+                status = 'স্থূলতা (Obese)';
+                colorClass = 'text-red-600';
+            }
+
+            statusSpan.innerText = status;
+            statusSpan.className = 'text-lg font-medium ' + colorClass;
+        }
+
+        // --- 3. Insulin Calculator Logic ---
+        function calculateInsulin() {
+            const current = parseFloat(document.getElementById('ins-current').value);
+            const target = parseFloat(document.getElementById('ins-target').value);
+            const isf = parseFloat(document.getElementById('ins-isf').value);
+
+            if (!current || !target || !isf) {
+                return; // Silently fail if inputs are empty
+            }
+
+            // Formula: (Current - Target) / ISF
+            let dose = (current - target) / isf;
+            if (dose < 0) dose = 0; // No negative insulin
+
+            document.getElementById('ins-dose').innerText = dose.toFixed(1);
+            document.getElementById('ins-result').classList.remove('hidden');
+        }
+
+        // --- 4. Logbook & Profile System (LocalStorage) ---
+        
+        // Profile Management
+        function saveProfile(e) {
+            e.preventDefault();
+            const profile = {
+                name: document.getElementById('p-name').value,
+                age: document.getElementById('p-age').value,
+                sex: document.getElementById('p-sex').value,
+                type: document.getElementById('p-type').value,
+                meds: document.getElementById('p-meds').value
+            };
+            localStorage.setItem('db_profile', JSON.stringify(profile));
+            renderProfile();
+        }
+
+        function renderProfile() {
+            const stored = localStorage.getItem('db_profile');
+            if (stored) {
+                const p = JSON.parse(stored);
+                document.getElementById('disp-name').innerText = p.name;
+                document.getElementById('disp-age').innerText = p.age;
+                document.getElementById('disp-sex').innerText = p.sex === 'Male' ? 'পুরুষ' : 'মহিলা';
+                document.getElementById('disp-type').innerText = p.type;
+                
+                document.getElementById('profile-form').classList.add('hidden');
+                document.getElementById('profile-display').classList.remove('hidden');
+                
+                // Pre-fill form if they want to edit
+                document.getElementById('p-name').value = p.name;
+                document.getElementById('p-age').value = p.age;
+            }
+        }
+
+        function editProfile() {
+            document.getElementById('profile-display').classList.add('hidden');
+            document.getElementById('profile-form').classList.remove('hidden');
+        }
+
+        // Logbook Data Management
+        let logs = JSON.parse(localStorage.getItem('db_logs')) || [];
+        let chartInstance = null;
+
+        function initLogTime() {
+            const now = new Date();
+            now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('log-time').value = now.toISOString().slice(0, 16);
+        }
+
+        function addLogEntry(e) {
+            e.preventDefault();
+            const date = document.getElementById('log-time').value;
+            const glucose = parseFloat(document.getElementById('log-glucose').value);
+            const status = document.getElementById('log-status').value;
+
+            if(!date || !glucose) return;
+
+            const entry = {
+                id: Date.now(),
+                date: date,
+                glucose: glucose,
+                status: status
+            };
+
+            logs.push(entry);
+            // Sort by date (newest first)
+            logs.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            localStorage.setItem('db_logs', JSON.stringify(logs));
+            
+            document.getElementById('log-glucose').value = '';
+            renderLogs();
+            updateChart();
+        }
+
+        function clearLogs() {
+            if(confirm("আপনি কি সব রেকর্ড মুছে ফেলতে চান?")) {
+                logs = [];
+                localStorage.removeItem('db_logs');
+                renderLogs();
+                updateChart();
+            }
+        }
+
+        function renderLogs() {
+            const tbody = document.getElementById('log-table-body');
+            tbody.innerHTML = '';
+
+            if (logs.length === 0) {
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-gray-400">কোনো তথ্য পাওয়া যায়নি</td></tr>`;
+                return;
+            }
+
+            logs.forEach(log => {
+                const dateObj = new Date(log.date);
+                const dateStr = dateObj.toLocaleDateString('bn-BD') + ' ' + dateObj.toLocaleTimeString('bn-BD', {hour: '2-digit', minute:'2-digit'});
+                
+                let badgeColor = 'bg-gray-100 text-gray-800';
+                let comment = 'স্বাভাবিক';
+                
+                // Color coding logic (Simplified)
+                if(log.glucose > 7.8) {
+                    badgeColor = 'bg-red-100 text-red-800';
+                    comment = 'বেশি';
+                } else if (log.glucose < 4.0) {
+                    badgeColor = 'bg-yellow-100 text-yellow-800';
+                    comment = 'কম (Hypo)';
+                } else {
+                    badgeColor = 'bg-green-100 text-green-800';
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = 'border-b hover:bg-gray-50';
+                tr.innerHTML = `
+                    <td class="p-3">${dateStr}</td>
+                    <td class="p-3">${log.status}</td>
+                    <td class="p-3 font-bold ${log.glucose > 7.8 ? 'text-red-600' : 'text-gray-800'}">${log.glucose}</td>
+                    <td class="p-3"><span class="px-2 py-1 rounded-full text-xs font-bold ${badgeColor}">${comment}</span></td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        // --- 5. Chart.js Implementation ---
+        function updateChart() {
+            const ctx = document.getElementById('diabetesChart').getContext('2d');
+            
+            // Prepare data for chart (reversed so oldest is left, newest is right)
+            const chartData = [...logs].reverse();
+            const labels = chartData.map(l => {
+                const d = new Date(l.date);
+                return d.toLocaleDateString('bn-BD', {day: 'numeric', month: 'short'});
+            });
+            const dataPoints = chartData.map(l => l.glucose);
+
+            if (chartInstance) {
+                chartInstance.destroy();
+            }
+
+            chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'গ্লুকোজ লেভেল (mmol/L)',
+                        data: dataPoints,
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.3,
+                        pointBackgroundColor: dataPoints.map(v => v > 7.8 ? '#ef4444' : (v < 4.0 ? '#eab308' : '#22c55e')),
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            suggestedMin: 3,
+                            suggestedMax: 15,
+                            grid: { color: '#f3f4f6' }
+                        },
+                        x: {
+                            grid: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // --- 6. Telemedicine Modal ---
+        function showModal() {
+            document.getElementById('appoint-modal').classList.remove('hidden');
+        }
+        function closeModal() {
+            document.getElementById('appoint-modal').classList.add('hidden');
+        }
+
+        // Initialize on Load
+        window.onload = function() {
+            renderProfile();
+            initLogTime();
+            renderLogs();
+            updateChart();
+        };
+
+    </script>
+</body>
+</html>
